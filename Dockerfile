@@ -11,7 +11,7 @@ ADD init /system/init
 ADD uwsgi.conf /etc/uwsgi/
 ADD nginx.conf /etc/nginx/
 
-ONBUILD ADD . /home/app/
+ONBUILD ADD . /app/
 ONBUILD RUN /system/init --install
 ONBUILD CMD ["/system/init", "--execute"]
 
