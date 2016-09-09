@@ -6,7 +6,15 @@ Designed for rapid development of Python web applications
 
     docker run -d -v /path/to/project:/app -p 80:80 relvacode/flask-microservice
     
-uWSGI will automatically reload the Python application after a change is detected
+uWSGI will automatically reload the Python application after a change is detected (20 second interval).
+    
+### ONBUIILD
+    
+Use this in your Dockerfile:
+
+    FROM relvacode/flask-microservice
+    
+When your image is built it will add the build context to `/app` and install any apt and pip dependencies.
 
 ## Stack Overview
 
@@ -57,3 +65,5 @@ To enable error logging of application errors to the container log you should ad
     from flask import Flask
     app = Flask(__name__)
     app.config['PROPAGATE_EXCEPTIONS'] = True
+    
+    
