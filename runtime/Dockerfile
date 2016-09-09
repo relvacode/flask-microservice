@@ -6,9 +6,9 @@ EXPOSE 80
 
 RUN apt-get -y update && apt-get -y install python-setuptools python-pip nginx && pip install uwsgi flask flask-restful && rm -rf /root/.cache/pip/ && mkdir /app
 
-ADD system/init /system/init
-ADD uwsgi.conf /etc/uwsgi/
-ADD nginx.conf /etc/nginx/
+ADD ./system/init /system/init
+ADD ./uwsgi.conf /etc/uwsgi/
+ADD ./nginx.conf /etc/nginx/
 
 WORKDIR /app
 
