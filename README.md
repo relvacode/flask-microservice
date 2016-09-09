@@ -4,7 +4,7 @@ Designed for rapid development of Python web applications
   
 ### Rapid Development
 
-    docker run -d -v /path/to/project:/home/app -p 80:80 relvacode/flask-microservice
+    docker run -d -v /path/to/project:/app -p 80:80 relvacode/flask-microservice
     
 uWSGI will automatically reload the Python application after a change is detected
 
