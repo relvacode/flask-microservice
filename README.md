@@ -48,15 +48,12 @@ When your image is built it will add the build context to `/app` and install any
 The home directory where applications are served is `/app`.
  Under this directory your application should have this folder structure
 
- * /app
-       * app/ - This is where your Python code goes
-         * `api.py` - Your main WSGI Python application
-       * static/ - Your static content such as .html, .js, .css files
-         * `index.html`
-         * js/
-         * css/
-       * `requirements.apt` - apt-get requirements, separated by newline
-       * `requirements.pip` - pip requirements, separated by newline
+ * `/app`
+   * `app/` - This is where your Python code goes
+     * `api.py` - Your main flask application file
+   * `static/` - Your static content such as .html, .js, .css files
+   * `requirements.apt` - apt requirements, separated by newline
+   * `requirements.pip` - pip requirements, separated by newline
 
 ## Flask
 
