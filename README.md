@@ -37,10 +37,10 @@ uWSGI will automatically reload the Python application after a change is detecte
 
 ## Application Folder Structure
 
-The home directory where applications are served is `/home/app`.
+The home directory where applications are served is `/app`.
  Under this directory your application should have this folder structure
 
- * /home/app
+ * /app
        * app/ - This is where your Python code goes
          * `api.py` - Your main WSGI Python application
        * static/ - Your static content such as .html, .js, .css files

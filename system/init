@@ -11,7 +11,7 @@ from datetime import datetime
 os.umask(022)
 
 class Configuration:
-    app_path = "/home/app"
+    app_path = "/app"
     requirements_pip = os.path.join(app_path, 'requirements.pip')
     requirements_apt = os.path.join(app_path, 'requirements.apt')
 
@@ -79,7 +79,7 @@ def install(apt_requirements=None, pip_requirements=None):
 
 def execute(hostname=None):
     procs = []
-    procs.append(Popen(['/usr/local/bin/uwsgi', '--ini', '/etc/uwsgi/uwsgi.conf', '--need-app', '-b', '32768', '-t', '60']))
+    procs.append(Popen(['/usr/local/bin/uwsgi', '--ini', '/etc/uwsgi/uwsgi.conf', '--need-app', '-b', '32768', '-t', '60', '--uid', '33', '--gid', '33', '--post-buffering=1']))
     procs.append(Popen(['/usr/sbin/nginx']))
     
     for p in procs:
