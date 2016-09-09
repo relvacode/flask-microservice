@@ -1,7 +1,5 @@
-# uWSGI and NGINX Stack for Python Web Applications
+## Python Flask Microservice
 
-Designed for rapid development of Python web applications
-  
 ### Rapid Development
 
     docker run -d -v /path/to/project:/app -p 80:80 relvacode/flask-microservice
