@@ -18,16 +18,13 @@ When your image is built it will add the build context to `/app` and install any
 
 ## Stack Overview
 
-  * Ubuntu 16.04 Base
+  * Ubuntu 18.04
   * Python 2.7.11
   * NGINX
     * Performs proxying to uWSGI
     * Also serves static content
   * uWSGI
     * Serves Python application
-  * /sbin/init
-    * `--install` - Installs pip and apt packages
-    * `--execute` - Executes the application
     
     
 ### Default Packages
