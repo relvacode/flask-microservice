@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# apt-get
+if [ -f /app/requirements.apt ]; then
+    apt-get -qq -y update
+    cat /app/requirements.apt | xargs apt-get -qq -y install
+    rm -rf /var/lib/apt/lists/*
+fi
+
+# pip
+if [ -f /app/requirements.pip ]; then
+ pip install --no-cache-dir -r /app/requirements.pip
+fi

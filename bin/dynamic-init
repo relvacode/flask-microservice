@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Wrapper around /init to install runtime dependencies
+
+echo
+echo "###       Live Container Install          ###"
+echo
+
+/bin/pkg-installer
+exec /init
