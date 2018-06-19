@@ -4,14 +4,15 @@ LABEL com.image.version="5.0.0" com.image.description="flask, uwsgi and nginx ap
 
 EXPOSE 80
 WORKDIR /app
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
-ENTRYPOINT ["/bin/dynamic-init"]
+ENTRYPOINT ["/init"]
 
 COPY bin /bin
 
-RUN chmod a+rx /bin/pkg-installer /bin/dynamic-init && \
+RUN chmod a+rx /bin/pkg-installer && \
     apt-get -y update && \
     apt-get -qq -y install python-setuptools python-pip && \
     apt-get -qq -y install nginx && \
@@ -21,6 +22,5 @@ RUN chmod a+rx /bin/pkg-installer /bin/dynamic-init && \
 COPY etc /etc
 
 ONBUILD COPY . /app/
-ONBUILD RUN /bin/pkg-installer
-ONBUILD ENTRYPOINT ["/init"]
+ONBUILD RUN /bin/pkg-installer && rm /etc/cont-init.d/02-pkg-installer
 

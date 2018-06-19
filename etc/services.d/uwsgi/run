@@ -1,2 +1,3 @@
 #!/usr/bin/execlineb -P
+with-contenv
 /usr/local/bin/uwsgi --ini /etc/uwsgi/uwsgi.conf --need-app -b 32768 -t 60 --uid 33 --gid 33 --post-buffering=1
