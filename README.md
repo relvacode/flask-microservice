@@ -6,7 +6,7 @@
 
     docker run -d -v /path/to/project:/app -p 80:80 relvacode/flask-microservice
     
-uWSGI will automatically reload the Python application after a change is detected (20 second interval).
+All dependencies will be installed on start-up and uWSGI will automatically reload the Python application after a change is detected (20 second interval).
     
 ### ONBUIILD
     
@@ -14,17 +14,18 @@ Use this in your Dockerfile:
 
     FROM relvacode/flask-microservice
     
-When your image is built it will add the build context to `/app` and install any apt and pip dependencies.
+When your image is built it will add the build context to `/app` and install any apt and pip dependencies during build time.
+This is the recommended method for production deployments.
 
 ## Stack Overview
 
   * Ubuntu 18.04
-  * Python 2.7.11
+  * Python 2.7.15rc1
   * NGINX
-    * Performs proxying to uWSGI
-    * Also serves static content
+    * Proxy the Python application on `/api`
+    * Serve static files from `/app/static`
   * uWSGI
-    * Serves Python application
+    * Serves Python application in `/app/app/api.py`
     
     
 ### Default Packages
@@ -51,6 +52,18 @@ The home directory where applications are served is `/app`.
    * `static/` - Your static content such as .html, .js, .css files
    * `requirements.apt` - apt requirements, separated by newline
    * `requirements.pip` - pip requirements, separated by newline
+
+## Environment Variables
+
+### `UWSGI_ENTRYPOINT`
+
+This sets what Python file/module in `/app/app` to serve using uWSGI. Do not include the file extension.
+Defaults to `api` which equates to `/app/app/api.py`
+
+### `UWSGI_APPLICATION`
+
+This sets what variable inside UWSGI_ENTRYPOINT points to the the uWSGI (Flask) application.
+Defaults to `app`.
 
 ## Flask
 

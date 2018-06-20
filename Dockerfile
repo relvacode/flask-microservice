@@ -4,7 +4,7 @@ LABEL com.image.version="5.0.0" com.image.description="flask, uwsgi and nginx ap
 
 EXPOSE 80
 WORKDIR /app
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 UWSGI_ENTRYPOINT=api UWSGI_APPLICATION=app
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
