@@ -12,7 +12,7 @@ ENTRYPOINT ["/init"]
 
 COPY bin /bin
 
-RUN chmod a+rx /bin/pkg-installer && \
+RUN mkdir /tmp/spool && chmod a+rx /bin/pkg-installer && \
     apt-get -y update && \
     apt-get -qq -y install python-setuptools python-pip && \
     apt-get -qq -y install nginx && \
