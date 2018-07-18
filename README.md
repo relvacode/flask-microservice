@@ -73,6 +73,11 @@ Defaults to `api` which equates to `/app/app/api.py`
 This sets what variable inside UWSGI_ENTRYPOINT points to the the uWSGI (Flask) application.
 Defaults to `app`.
 
+### `UWSGI_CHDIR`
+
+Change to this directory before loading the Python application.
+Defaults to `/app/app`.
+
 ## Flask
 
 To enable error logging of application errors to the container log you should add the `PROPAGATE_EXCEPTIONS` parameter to the Flask configuration.
