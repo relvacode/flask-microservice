@@ -13,15 +13,15 @@ ENTRYPOINT ["/init"]
 
 COPY bin /bin
 
+ONBUILD COPY . /app/
+ONBUILD RUN /bin/pkg-installer && rm /etc/cont-init.d/02-pkg-installer
+
 RUN mkdir /tmp/spool && chmod a+rx /bin/pkg-installer && \
     apt-get -y update && \
     apt-get -qq -y install python-setuptools python-pip && \
     apt-get -qq -y install nginx && \
     pip install --no-cache-dir uwsgi flask flask-restful && \
+    apt autoremove -y  && \
     rm -rf /var/lib/apt/lists/*
 
 COPY etc /etc
-
-ONBUILD COPY . /app/
-ONBUILD RUN /bin/pkg-installer && rm /etc/cont-init.d/02-pkg-installer
-
