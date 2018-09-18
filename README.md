@@ -63,6 +63,11 @@ The home directory where applications are served is `/app`.
 
 ## Environment Variables
 
+### `UWSGI_MOUNTPOINT`
+
+This sets what base URL to serve the API on. Defaults to `/api`.
+To serve the API on root use `UWSGI_MOUNTPOINT=/`
+
 ### `UWSGI_ENTRYPOINT`
 
 This sets what Python file/module in `/app/app` to serve using uWSGI. Do not include the file extension.
